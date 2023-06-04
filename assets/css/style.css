@@ -3,6 +3,22 @@
 
 }
 
-html {
-    background-color: black;
+body {
+background: black;
+font-family: 'Caveat', cursive;
+}
+
+header {
+    text-align: center;
+    color: var(--dark);
+    font-size: 24px;
+}
+
+.card {
+    font-size: 26px;
+}
+
+.text-button, .time-info {
+    background-color: var(--dark);
+    color: black;
 }
