@@ -15,27 +15,21 @@ var twoText = $('#2pm-text');
 var threeButton = $('#3pm-button');
 var threeText = $('#3pm-text');
 
+//current time using dayjs
 var today = dayjs();
 $('#time').text(today.format('MMM D, YYYY, h:mm'));
 
 $(document).ready(function () {
-    var eightButton = $('#8am-button');
     var eightText = $('#8am-text');
-    var nineButton = $('#9am-button');
     var nineText = $('#9am-text');
-    var tenButton = $('#10am-button');
     var tenText = $('#10am-text');
-    var elevenButton = $('#11am-button');
     var elevenText = $('#11am-text');
-    var twelveButton = $('#12pm-button');
     var twelveText = $('#12pm-text');
-    var oneButton = $('#1pm-button');
     var oneText = $('#1pm-text');
-    var twoButton = $('#2pm-button');
     var twoText = $('#2pm-text');
-    var threeButton = $('#3pm-button');
     var threeText = $('#3pm-text');
 
+    //these are here to call from local storage, and display that calue in the text box if there is a value in there
     var storedValue8 = localStorage.getItem('8am');
     if (storedValue8) {
         eightText.val(storedValue8);
@@ -74,6 +68,29 @@ $(document).ready(function () {
     }
 })
 
+
+function changeBoxColor() {
+    // Get the current hour using dayjs
+    const currentHour = dayjs().hour();
+
+    // Loop through the time cards
+    for (let hour = 8; hour <= 15; hour++) {
+        const timeCard = $(`#${hour}am`);
+        const textCard = timeCard.children().eq(1);
+
+        if (textCard.length) {
+            if (hour < currentHour) {
+                textCard.css('background-color', 'gray'); // Past time, change to gray
+            } else if (hour === currentHour) {
+                textCard.css('background-color', 'red'); // Current time, change to red
+            } else {
+                textCard.css('background-color', 'green'); // Future time, change to green
+            }
+        }
+    }
+};
+
+//handle functions to set the local storage for each of the time text boxes
 var handle8am = function (event) {
     event.preventDefault();
 
@@ -196,6 +213,7 @@ twelveButton.on('click', handle12pm);
 oneButton.on('click', handle1pm);
 twoButton.on('click', handle2pm);
 threeButton.on('click', handle3pm);
+changeBoxColor();
 
 
 
