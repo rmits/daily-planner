@@ -80,11 +80,11 @@ function changeBoxColor() {
 
         if (textCard.length) {
             if (hour < currentHour) {
-                textCard.css('background-color', 'gray'); // Past time, change to gray
+                textCard.css('background', 'gray'); // Past time, change to gray
             } else if (hour === currentHour) {
-                textCard.css('background-color', 'red'); // Current time, change to red
+                textCard.css('background', 'red'); // Current time, change to red
             } else {
-                textCard.css('background-color', 'green'); // Future time, change to green
+                textCard.css('background', 'green'); // Future time, change to green
             }
         }
     }

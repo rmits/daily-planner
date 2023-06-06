@@ -22,3 +22,7 @@ header {
     background-color: var(--dark);
     color: black;
 }
+
+.textbox {
+    cursor: grab;
+}
